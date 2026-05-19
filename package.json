@@ -2,7 +2,7 @@
   "name": "amplify",
   "displayName": "Amplify",
   "description": "Expand short prompts into detailed engineering instructions using Copilot.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "whykislay",
   "repository": {
     "type": "git",
