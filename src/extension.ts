@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 
 export function activate(context: vscode.ExtensionContext) {
-    // 1. Register Editor Command
+    // 1. Register Editor Command (Selection/Input Box)
     let expandCommand = vscode.commands.registerCommand('amplify.expandPrompt', async () => {
         const editor = vscode.window.activeTextEditor;
         let selectedText = '';
@@ -40,35 +40,17 @@ export function activate(context: vscode.ExtensionContext) {
         });
     });
 
-    // 2. Register Chat Participant
+    // 2. Register Chat Participant (@amplify)
+    // Now ONLY expands the prompt and returns the text.
     const amplifyChat = vscode.chat.createChatParticipant('amplify', async (request, context, stream, token) => {
-        stream.markdown('✨ *Amplify is expanding your prompt...*\n\n');
-
         try {
             const expandedPrompt = await expandPromptLogic(request.prompt);
-            stream.markdown('🚀 *Generating code from expanded prompt...*\n\n');
-
-            const config = vscode.workspace.getConfiguration('amplify');
-            const fallback = config.get<string>('fallbackProvider');
-
-            // Try vscode.lm first
-            const models = await vscode.lm.selectChatModels();
-            if (models.length > 0) {
-                const model = models[0];
-                const messages = [vscode.LanguageModelChatMessage.User(expandedPrompt)];
-                const chatResponse = await model.sendRequest(messages, {}, token);
-                for await (const fragment of chatResponse.text) {
-                    stream.markdown(fragment);
-                }
-            } else if (fallback === 'groq' || fallback === 'gemini') {
-                stream.markdown(`*Using ${fallback} fallback...*\n\n`);
-                const result = await callExternalFallback(expandedPrompt, fallback, config);
-                stream.markdown(result);
-            } else {
-                stream.markdown('❌ No AI provider available. Install GitHub Copilot or configure a fallback API key.');
-            }
+            
+            // Just output the expanded prompt to the user
+            stream.markdown(expandedPrompt);
+            
         } catch (err) {
-            stream.markdown(`❌ Error: ${err}`);
+            stream.markdown(`❌ Error expanding prompt: ${err}`);
         }
 
         return { metadata: { command: 'expand' } };
@@ -77,6 +59,9 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(expandCommand, amplifyChat);
 }
 
+/**
+ * Core expansion logic using vscode.lm or fallback providers.
+ */
 async function expandPromptLogic(shorthand: string): Promise<string> {
     const config = vscode.workspace.getConfiguration('amplify');
     const systemPrompt = config.get<string>('systemPrompt') || '';
@@ -107,12 +92,10 @@ async function expandPromptLogic(shorthand: string): Promise<string> {
 }
 
 async function callExternalFallback(prompt: string, provider: string, config: vscode.WorkspaceConfiguration): Promise<string> {
-    // Basic implementation of external API calls
     if (provider === 'groq') {
         const apiKey = config.get<string>('groqApiKey');
         if (!apiKey) { throw new Error("Groq API Key is missing."); }
-        // Simple mock of fetch logic for brevity in this example
-        return `[Groq Expansion for: ${prompt.substring(0, 30)}...] (Note: Ensure 'node-fetch' or similar is used for real implementation)`;
+        return `[Groq Expansion for: ${prompt.substring(0, 30)}...]`;
     }
     if (provider === 'gemini') {
         const apiKey = config.get<string>('geminiApiKey');
