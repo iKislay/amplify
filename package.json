@@ -37,9 +37,33 @@
           "type": "string",
           "default": "You are an expert prompt engineer. Take the user's short shorthand instruction and expand it into a highly detailed, structured prompt for an AI coding assistant. Include sections for context, requirements, edge cases, and expected output format.",
           "description": "The system prompt used to expand the user's input."
+        },
+        "amplify.fallbackProvider": {
+          "type": "string",
+          "enum": ["none", "groq", "gemini"],
+          "default": "none",
+          "description": "Fallback AI provider if Copilot is not available."
+        },
+        "amplify.groqApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "API Key for Groq fallback."
+        },
+        "amplify.geminiApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "API Key for Gemini fallback."
         }
       }
-    }
+    },
+    "chatParticipants": [
+      {
+        "id": "amplify",
+        "name": "amplify",
+        "description": "Expand prompts and generate code directly in chat.",
+        "isDefault": false
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
