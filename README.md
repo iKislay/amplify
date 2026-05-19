@@ -1,22 +1,43 @@
-# Amplify
+# Amplify by Kislay
 
-A VS Code extension to turn short, lazy prompts into highly detailed software engineering instructions.
+Amplify is your Senior AI Architect inside VS Code. It doesn't just expand prompts; it understands your workspace and helps you architect your development tasks.
 
-## Features
+Built with ❤️ by **[Kumar Kislay](https://forg.to/@kislay)**.
 
-### 1. Chat Participant (Modern Flow)
-Open the VS Code Chat (Cmd+Shift+I or side panel) and type `@amplify` followed by your shorthand.
-- **Usage**: `@amplify create a nodejs server with express`
-- **How it works**: Amplify intercepts your lazy prompt, expands it using its internal expert prompt engineering logic, and then feeds that massive prompt back to the AI to stream high-quality code directly into your chat.
+---
 
-### 2. Editor Selection
-Highlight a short instruction in any file and press `Ctrl+Alt+C` (or `Cmd+Alt+C`) to replace it with a detailed prompt.
+## 🚀 Modes (Slash Commands)
 
-### 3. Quick Expand
-Press `Ctrl+Alt+C` with no selection to enter a prompt, which will be expanded and copied to your clipboard.
+Use `@amplify` in the VS Code Chat panel with the following commands:
 
-## Customization
-You can customize the **System Prompt** used for expansion in the VS Code Settings under `Amplify`. This allows you to define exactly how your shorthand is transformed.
+### 1. `/expand [shorthand]`
+The classic mode. Turns your lazy instructions into a massive, detailed prompt. It now includes context from your open files so the AI knows your tech stack and style.
+
+### 2. `/consult [shorthand]`
+The "Senior Architect" mode. Instead of expanding immediately, Amplify asks you 3-4 critical technical questions to refine your requirements. Use this when you're starting something complex.
+
+### 3. `/breakdown [shorthand]`
+The "Project Manager" mode. Splits a large goal into a step-by-step implementation plan, providing a detailed prompt for each sub-task.
+
+---
+
+## 🛠 Features
+
+- **Workspace Awareness**: Amplify scans your project structure to ensure expanded prompts match your existing code patterns.
+- **Editor Integration**: Highlight text in any file and press `Ctrl+Alt+C` (or `Cmd+Alt+C`) to replace it with a detailed prompt.
+- **AI Fallbacks**: Supports GitHub Copilot (default) with optional fallbacks for Groq and Gemini.
+
+---
+
+## 👨‍💻 About the Developer
+
+**Kumar Kislay** is a software engineer focused on building tools that remove friction from the creative process.
+
+- **X (Twitter)**: [@whykislayy](https://x.com/whykislayy)
+- **LinkedIn**: [in/kislayy](https://linkedin.com/in/kislayy)
+- **Website**: [forg.to/@kislay](https://forg.to/@kislay)
+
+---
 
 ## Requirements
 Requires **GitHub Copilot** or a compatible AI extension that supports the `vscode.lm` API.

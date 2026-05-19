@@ -1,9 +1,13 @@
 {
   "name": "amplify",
-  "displayName": "Amplify",
-  "description": "Expand short prompts into detailed engineering instructions using Copilot.",
-  "version": "0.1.2",
+  "displayName": "Amplify by Kislay",
+  "description": "Architectural Prompt Engineer. Built by Kumar Kislay (@whykislayy).",
+  "version": "0.1.1",
   "publisher": "whykislay",
+  "author": {
+    "name": "Kumar Kislay",
+    "url": "https://forg.to/@kislay"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/iKislay/amplify.git"
@@ -60,8 +64,22 @@
       {
         "id": "amplify",
         "name": "amplify",
-        "description": "Expand prompts and generate code directly in chat.",
-        "isDefault": false
+        "description": "Amplify: Your Senior Architect (by Kumar Kislay)",
+        "isDefault": false,
+        "commands": [
+          {
+            "name": "expand",
+            "description": "Strictly expand shorthand into a detailed prompt."
+          },
+          {
+            "name": "consult",
+            "description": "Interactive: Asks clarifying questions to refine your architected prompt."
+          },
+          {
+            "name": "breakdown",
+            "description": "Break complex tasks into a multi-step prompting plan."
+          }
+        ]
       }
     ]
   },
