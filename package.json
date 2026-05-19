@@ -1,0 +1,56 @@
+{
+  "name": "prompt-expander",
+  "displayName": "Prompt Expander",
+  "description": "Expand short prompts into detailed engineering instructions using Copilot.",
+  "version": "0.1.0",
+  "publisher": "kislay",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.expandPrompt",
+        "title": "Expand Prompt"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "extension.expandPrompt",
+        "key": "ctrl+alt+c",
+        "mac": "cmd+alt+c"
+      }
+    ],
+    "configuration": {
+      "title": "Prompt Expander",
+      "properties": {
+        "promptExpander.systemPrompt": {
+          "type": "string",
+          "default": "You are an expert prompt engineer. Take the user's short shorthand instruction and expand it into a highly detailed, structured prompt for an AI coding assistant. Include sections for context, requirements, edge cases, and expected output format.",
+          "description": "The system prompt used to expand the user's input."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.90.0",
+    "@types/node": "20.x",
+    "typescript": "^5.4.5",
+    "eslint": "^8.57.0",
+    "@typescript-eslint/parser": "^7.11.0",
+    "@typescript-eslint/eslint-plugin": "^7.11.0"
+  }
+}
