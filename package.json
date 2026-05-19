@@ -1,9 +1,13 @@
 {
-  "name": "prompt-expander",
-  "displayName": "Prompt Expander",
+  "name": "amplify",
+  "displayName": "Amplify",
   "description": "Expand short prompts into detailed engineering instructions using Copilot.",
   "version": "0.1.0",
   "publisher": "kislay",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iKislay/amplify.git"
+  },
   "engines": {
     "vscode": "^1.90.0"
   },
@@ -15,21 +19,21 @@
   "contributes": {
     "commands": [
       {
-        "command": "extension.expandPrompt",
+        "command": "amplify.expandPrompt",
         "title": "Expand Prompt"
       }
     ],
     "keybindings": [
       {
-        "command": "extension.expandPrompt",
+        "command": "amplify.expandPrompt",
         "key": "ctrl+alt+c",
         "mac": "cmd+alt+c"
       }
     ],
     "configuration": {
-      "title": "Prompt Expander",
+      "title": "Amplify",
       "properties": {
-        "promptExpander.systemPrompt": {
+        "amplify.systemPrompt": {
           "type": "string",
           "default": "You are an expert prompt engineer. Take the user's short shorthand instruction and expand it into a highly detailed, structured prompt for an AI coding assistant. Include sections for context, requirements, edge cases, and expected output format.",
           "description": "The system prompt used to expand the user's input."

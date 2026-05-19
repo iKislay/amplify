@@ -1,4 +1,4 @@
-# Prompt Expander
+# Amplify
 
 A VS Code extension to turn short, lazy prompts into highly detailed software engineering instructions.
 

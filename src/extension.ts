@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 
 export function activate(context: vscode.ExtensionContext) {
-    let disposable = vscode.commands.registerCommand('extension.expandPrompt', async () => {
+    let disposable = vscode.commands.registerCommand('amplify.expandPrompt', async () => {
         const editor = vscode.window.activeTextEditor;
         let selectedText = '';
         let range: vscode.Range | undefined;
@@ -30,7 +30,7 @@ export function activate(context: vscode.ExtensionContext) {
             cancellable: false
         }, async (progress) => {
             try {
-                const systemPrompt = vscode.workspace.getConfiguration('promptExpander').get<string>('systemPrompt') || '';
+                const systemPrompt = vscode.workspace.getConfiguration('amplify').get<string>('systemPrompt') || '';
                 
                 // Select available chat models (filtering for common ones or just picking what's available)
                 const models = await vscode.lm.selectChatModels();
