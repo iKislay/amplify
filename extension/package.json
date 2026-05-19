@@ -1,0 +1,43 @@
+{
+  "name": "amplify",
+  "displayName": "Amplify",
+  "description": "Enhance developer prompts with LLM context before they reach AI assistants",
+  "version": "1.0.0",
+  "publisher": "amplify-dev",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "amplify.enhance",
+        "title": "Amplify: Enhance Prompt"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "amplify.enhance",
+        "key": "ctrl+alt+a",
+        "mac": "cmd+alt+a",
+        "when": "editorTextFocus"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "@types/vscode": "^1.90.0",
+    "@vscode/vsce": "^3.1.0",
+    "typescript": "^5.4.5"
+  }
+}

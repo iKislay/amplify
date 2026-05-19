@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+out/
+
+# Environment
+.env
+
+# VS Code
+.vscode-test*/
+*.vsix
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor
+*.swp
+*.swo
+.idea/
+
+# Backend build
+backend/dist/
+extension/out/
+
+# Misc
+*.bak
+*.tmp
