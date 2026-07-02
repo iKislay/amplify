@@ -1,0 +1,1 @@
+export { AmplifyStatusBar } from './statusbar';
