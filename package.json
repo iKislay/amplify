@@ -26,7 +26,6 @@
     "prompt expansion",
     "architect"
   ],
-  "icon": "media/icon.png",
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
